@@ -6,7 +6,7 @@
         <title>D3JS - v4</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="d3.min.js"></script>
+        <script src="static/js/d3.min.js"></script>
         <style>
         </style>
     </head>
@@ -16,6 +16,7 @@
 <script>
 
 // Global
+var data_file = 'data/AccountStatement20171016.csv';
 var dataset;
 
 // Utilities
@@ -39,7 +40,7 @@ var width = innerWidth - padding.left - padding.right;
 var height = innerHeight - padding.top - padding.bottom;
 
 // Load data
-d3.csv("AccountStatement20171016.csv", rowConverter, function(error, data) {
+d3.csv(data_file, rowConverter, function(error, data) {
   if (error) throw error;
   dataset = data;
 
@@ -88,7 +89,7 @@ d3.csv("AccountStatement20171016.csv", rowConverter, function(error, data) {
     .attr("r", function(d) {return rScale(Math.abs(d.amount));});
 
   // Generate text
-  var texts = svg.selectAll("text")
+/*  var texts = svg.selectAll("text")
     .data(dataset)
     .enter()
     .append("text")
@@ -100,6 +101,7 @@ d3.csv("AccountStatement20171016.csv", rowConverter, function(error, data) {
     .attr("font-family", "sans-serif")
     .attr("font-size", "11px")
     .attr("fill", "red");
+ */
 
   // Axis
   var xAxis = d3.axisBottom()
